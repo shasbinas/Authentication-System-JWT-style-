@@ -26,6 +26,12 @@ const Register = () => {
         dispatch(registerUser(formData));
     };
 
+    const handleKeyDown = (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+            handleSubmit(e);
+        }
+    };
+
     return (
         <div className="flex justify-center items-center min-h-[80vh]">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
@@ -40,7 +46,7 @@ const Register = () => {
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="space-y-6">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                         <div className="relative">
